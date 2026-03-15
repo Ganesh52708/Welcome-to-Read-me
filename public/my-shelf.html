@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shelf - My Book Shelf</title>
+    <link rel="stylesheet" href="/public/css/my-shelf.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <span class="logo-icon">📚</span>
+                <h2>My <span>Shelf</span></h2>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" onclick="window.location.href='index.html'">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Home</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='index.html'">
+                <span class="nav-icon">🔍</span>
+                <span class="nav-text">Search</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='my-shelf.html'">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">My Shelf</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='contribute.html'">
+                <span class="nav-icon">✨</span>
+                <span class="nav-text">Contribute</span>
+                <span class="nav-indicator"></span>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-stats">
+                <div class="stat-item">
+                    <span class="stat-icon">📚</span>
+                    <div>
+                        <p class="stat-value" id="total-books">0</p>
+                        <p class="stat-label">Books</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">📖</span>
+                    <div>
+                        <p class="stat-value" id="reading-count">0</p>
+                        <p class="stat-label">Reading</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Mobile Nav -->
+        <div class="mobile-nav">
+            <a href="index.html" class="mobile-nav-btn">🏠 Home</a>
+            <a href="my-shelf.html" class="mobile-nav-btn active">📚 My Shelf</a>
+            <a href="contribute.html" class="mobile-nav-btn">✨ Contribute</a>
+        </div>
+        <div class="hero-section">
+            <div class="floating-elements">
+                <!-- <span class="float-book">📖</span>
+                <span class="float-star">⭐</span>
+                <span class="float-heart">❤️</span> -->
+            </div>
+            <div class="hero-content">
+                <h1 class="page-title">📚 My Personal Library</h1>
+                <p class="page-subtitle">Your curated collection of amazing books</p>
+            </div>
+            <button class="add-book-btn" onclick="window.location.href='index.html'">
+                <span>➕</span> Add New Book
+            </button>
+        </div>
+
+        <div class="shelf-container">
+            <div class="shelf-tabs">
+                <button class="tab-btn active" data-filter="all">All Books <span class="count" id="all-count">0</span></button>
+                <button class="tab-btn" data-filter="reading">Reading <span class="count" id="reading-tab-count">0</span></button>
+                <button class="tab-btn" data-filter="saved">To Read <span class="count" id="saved-count">0</span></button>
+                <button class="tab-btn" data-filter="completed">Completed <span class="count" id="completed-count">0</span></button>
+            </div>
+
+            <div class="books-grid" id="books-grid">
+                <!-- Book cards will be inserted here -->
+            </div>
+
+            <div class="empty-state" id="empty-state">
+                <div class="empty-illustration">📚</div>
+                <h3>Your shelf is empty</h3>
+                <p>Start building your personal library by adding books</p>
+                <button class="browse-btn" onclick="window.location.href='index.html'">Browse Books</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Progress Modal -->
+    <div class="modal" id="progress-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProgressModal()">&times;</button>
+            <h3>📖 Update Reading Progress</h3>
+            <div class="progress-slider-container">
+                <input type="range" min="0" max="100" value="0" class="progress-slider" id="progress-slider">
+                <p class="progress-value"><span id="progress-display">0</span>%</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeProgressModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveProgress()">Save Progress</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="my-shelf.js"></script>
+</body>
+</html>

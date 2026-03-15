@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Book Shelf - Explore diverse collection of books and digital resources">
+    <meta name="theme-color" content="#ff5722">
+    <title>My Book Shelf - Discover & Read Books</title>
+    <link rel="stylesheet" href="\public\css\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <span class="logo-icon">📚</span>
+                <h2>My <span>Book</span> Shelf</h2>
+            </div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li id="home-button" role="button" tabindex="0" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Home</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li id="Search" role="button" tabindex="0" class="nav-item">
+                <span class="nav-icon">🔍</span>
+                <span class="nav-text">Search</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li id="My Shelf" role="button" tabindex="0" class="nav-item">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">My Shelf</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li id="Contribute" role="button" tabindex="0" class="nav-item" onclick="window.location.href='contribute.html'">
+                <span class="nav-icon">✨</span>
+                <span class="nav-text">Contribute</span>
+                <span class="nav-indicator"></span>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-stats">
+                <div class="stat-item">
+                    <span class="stat-icon">📚</span>
+                    <div>
+                        <p class="stat-value" id="books-count">0</p>
+                        <p class="stat-label">Books</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">❤️</span>
+                    <div>
+                        <p class="stat-value" id="favorites-count">0</p>
+                        <p class="stat-label">Favorites</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <!-- <div class="sparkle-particles">
+                <span class="particle p1">✨</span>
+                <span class="particle p2">⭐</span>
+                <span class="particle p3">✨</span>
+                <span class="particle p4">💫</span>
+                <span class="particle p5">⭐</span>
+                <span class="particle p6">✨</span>
+                <span class="particle p7">💫</span>
+                <span class="particle p8">✨</span>
+            </div> -->
+            <div class="floating-decor">
+                <span class="float-icon book-float-1">📖</span>
+                <span class="float-icon sparkle-1">✨</span>
+                <span class="float-icon leaf-1">🍃</span>
+                <span class="float-icon book-float-2">📚</span>
+                <span class="float-icon sparkle-2">⭐</span>
+                <span class="float-icon leaf-2">🌿</span>
+            </div>
+            <div class="hero-content">
+                <div class="hero-icon">📕</div>
+                <h1>My Book Shelf</h1>
+                <div class="hero-quote-card">
+                    <p class="hero-quote">"The more that you read, the more things you will know. The more that you learn, the more places you'll go."</p>
+                    <p class="hero-author">— Dr. Seuss</p>
+                </div>
+            </div>
+            <div class="hero-illustration">
+                <div class="magical-archway">
+                    <div class="archway-glow"></div>
+                    <div class="tiger-container">
+                        <img src="\img\tiger.jpg" alt="Cute tiger reading" class="tiger-mascot">
+                        <div class="decoration-items">
+                            <div class="book-stack">📚</div>
+                            <div class="globe">🌍</div>
+                            <div class="plant">🪴</div>
+                        </div>
+                        <div class="floating-books">
+                            <span class="fb1">📖</span>
+                            <span class="fb2">📕</span>
+                            <span class="fb3">📘</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="mobile-nav">
+                <a href="index.html" class="mobile-nav-btn">🏠 Home</a>
+                <a href="my-shelf.html" class="mobile-nav-btn">📚 My Shelf</a>
+                <a href="contribute.html" class="mobile-nav-btn">✨ Contribute</a>
+            </div>
+            <div class="quote">
+                <p>"Welcome to Read Me! Explore our diverse collection of books and digital resources, and enjoy a space dedicated to learning, research, and discovery. Happy reading!"</p>
+                <span>- Walt Disney</span>
+            </div>
+        </header>
+
+        <!-- Search Box -->
+        <section class="search-box" role="search">
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Search for books by title, author, or genre..."
+                    aria-label="Search for books"
+                >
+                <button id="search-button" aria-label="Search">
+                    <span>Search</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Books Section -->
+        <section class="book-section">
+            <div class="section-header">
+                <h3>🌟 Featured Books</h3>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" title="Grid View">
+                        <span>☷️</span>
+                    </button>
+                    <button class="view-btn" data-view="list" title="List View">
+                        <span>☰</span>
+                    </button>
+                </div>
+            </div>
+            <div class="books" id="book-container" role="list"></div>
+        </section>
+    </main>
+
+    <!-- Chatbot Container -->
+    <aside class="chatbot-container" id="chatbot-container" role="complementary" aria-label="Book recommendation chatbot">
+        <div class="chatbot-header">
+            <h4>📖 Book Bot</h4>
+            <button id="close-chatbot" aria-label="Close chatbot">×</button>
+        </div>
+        <div class="chatbot-body" id="chatbot-body">
+            <div class="chatbot-message bot">
+                👋 Hello! Please select a genre to explore books:
+            </div>
+            <div id="genre-options" class="genre-options" role="list">
+                <!-- Genre buttons dynamically added here -->
+            </div>
+        </div>
+        <div class="chatbot-input-container">
+            <input type="text" id="chatbot-input" placeholder="Ask me about books..." aria-label="Chat input">
+            <button id="chatbot-send" aria-label="Send message">➤</button>
+        </div>
+    </aside>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbot-toggle" aria-label="Open book recommendation chatbot">💬</button>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+
+    <!-- Quick Actions Menu -->
+    <div class="quick-actions" id="quick-actions">
+        <button class="quick-action-btn" id="filter-btn" title="Filter Books">
+            <span>🔍</span>
+        </button>
+        <button class="quick-action-btn" id="view-favorites-btn" title="View Favorites">
+            <span>❤️</span>
+        </button>
+        <button class="quick-action-btn" id="random-book-btn" title="Random Book">
+            <span>🎲</span>
+        </button>
+    </div>
+
+    <!-- Book Preview Modal -->
+    <div class="modal" id="book-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Book details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Reader Modal -->
+    <div class="book-reader-modal" id="book-reader-modal">
+        <div class="book-reader-container">
+            <div class="book-reader-header">
+                <div class="book-reader-title" id="reader-book-title">Book Reader</div>
+                <button class="book-reader-close" id="reader-close">&times;</button>
+            </div>
+            <div class="book-reader-content" id="reader-content">
+                <!-- Full book content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Panel -->
+    <div class="filter-panel" id="filter-panel">
+        <div class="filter-header">
+            <h3>Filter Books</h3>
+            <button id="close-filter">&times;</button>
+        </div>
+        <div class="filter-content">
+            <div class="filter-group">
+                <label>Sort By:</label>
+                <select id="sort-select">
+                    <option value="relevance">Relevance</option>
+                    <option value="newest">Newest</option>
+                    <option value="title">Title (A-Z)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Language:</label>
+                <select id="language-select">
+                    <option value="">All Languages</option>
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                </select>
+            </div>
+            <button class="apply-filter-btn" id="apply-filter">Apply Filters</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    window.addEventListener('load', function() {
+        var container = document.getElementById('book-container');
+        if (!container) return;
+        setTimeout(function() {
+            if (container.children.length === 0 || container.querySelector('.skeleton')) {
+                var books = [
+                    { id: 's1', title: 'The Midnight Library', author: 'Matt Haig', img: 'https://covers.openlibrary.org/b/id/10909258-M.jpg', link: 'https://openlibrary.org/works/OL20652688W' },
+                    { id: 's2', title: 'Atomic Habits', author: 'James Clear', img: 'https://covers.openlibrary.org/b/id/10527843-M.jpg', link: 'https://openlibrary.org/works/OL17930368W' },
+                    { id: 's3', title: 'Sapiens', author: 'Yuval Noah Harari', img: 'https://covers.openlibrary.org/b/id/8739161-M.jpg', link: 'https://openlibrary.org/works/OL17335652W' },
+                    { id: 's4', title: 'Dune', author: 'Frank Herbert', img: 'https://covers.openlibrary.org/b/id/8231856-M.jpg', link: 'https://openlibrary.org/works/OL818020W' },
+                    { id: 's5', title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', img: 'https://covers.openlibrary.org/b/id/7222246-M.jpg', link: 'https://openlibrary.org/works/OL468431W' },
+                    { id: 's6', title: '1984', author: 'George Orwell', img: 'https://covers.openlibrary.org/b/id/8575708-M.jpg', link: 'https://openlibrary.org/works/OL1168007W' },
+                    { id: 's7', title: 'To Kill a Mockingbird', author: 'Harper Lee', img: 'https://covers.openlibrary.org/b/id/8228691-M.jpg', link: 'https://openlibrary.org/works/OL450749W' },
+                    { id: 's8', title: 'Pride and Prejudice', author: 'Jane Austen', img: 'https://covers.openlibrary.org/b/id/8235657-M.jpg', link: 'https://openlibrary.org/works/OL66554W' },
+                    { id: 's9', title: 'The Alchemist', author: 'Paulo Coelho', img: 'https://covers.openlibrary.org/b/id/8479576-M.jpg', link: 'https://openlibrary.org/works/OL16328948W' },
+                    { id: 's10', title: 'Harry Potter', author: 'J.K. Rowling', img: 'https://covers.openlibrary.org/b/id/10521270-M.jpg', link: 'https://openlibrary.org/works/OL82563W' },
+                    { id: 's11', title: 'The Hobbit', author: 'J.R.R. Tolkien', img: 'https://covers.openlibrary.org/b/id/8406786-M.jpg', link: 'https://openlibrary.org/works/OL262758W' },
+                    { id: 's12', title: 'Educated', author: 'Tara Westover', img: 'https://covers.openlibrary.org/b/id/9256188-M.jpg', link: 'https://openlibrary.org/works/OL17756329W' },
+                    { id: 's13', title: 'Brave New World', author: 'Aldous Huxley', img: 'https://covers.openlibrary.org/b/id/8406782-M.jpg', link: 'https://openlibrary.org/works/OL81350W' },
+                    { id: 's14', title: 'The Da Vinci Code', author: 'Dan Brown', img: 'https://covers.openlibrary.org/b/id/8406784-M.jpg', link: 'https://openlibrary.org/works/OL16328949W' },
+                    { id: 's15', title: 'Rich Dad Poor Dad', author: 'Robert Kiyosaki', img: 'https://covers.openlibrary.org/b/id/8739085-M.jpg', link: 'https://openlibrary.org/works/OL81624W' },
+                    { id: 's16', title: 'Sherlock Holmes', author: 'Arthur Conan Doyle', img: 'https://covers.openlibrary.org/b/id/8231991-M.jpg', link: 'https://openlibrary.org/works/OL262759W' }
+                ];
+                container.innerHTML = '';
+                books.forEach(function(book) {
+                    var div = document.createElement('div');
+                    div.className = 'book-item';
+                    div.innerHTML = '<button class="favorite-btn" onclick="handleFavorite(\'' + book.id + '\', this, event)">🤍</button>' +
+                        '<img src="' + book.img + '" alt="' + book.title + '" loading="lazy" onerror="this.src=\'https://via.placeholder.com/150x200?text=No+Cover\'">' +
+                        '<p>' + book.title + '</p>' +
+                        '<p class="book-author-small">' + book.author + '</p>' +
+                        '<div class="book-actions">' +
+                        '<button class="read-btn" onclick="window.open(\'' + book.link + '\',\'_blank\')">Read Now</button>' +
+                        '<button class="add-shelf-btn" onclick="addToShelf(\'' + book.id + '\',\'' + book.title + '\',\'' + book.author + '\',\'' + book.img + '\',this,event)">+ Add to Shelf</button>' +
+                        '</div>';
+                    container.appendChild(div);
+                });
+            }
+        }, 3000);
+    });
+    </script>
+</body>
+</html>

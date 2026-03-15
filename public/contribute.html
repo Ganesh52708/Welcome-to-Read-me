@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribute - My Book Shelf</title>
+    <link rel="stylesheet" href="/public/css/contribute.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <span class="logo-icon">📚</span>
+                <h2>Book <span>Shelf</span></h2>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item" onclick="window.location.href='index.html'">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Home</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='index.html'">
+                <span class="nav-icon">🔍</span>
+                <span class="nav-text">Search</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='my-shelf.html'">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">My Shelf</span>
+                <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item active">
+                <span class="nav-icon">✨</span>
+                <span class="nav-text">Contribute</span>
+                <span class="nav-indicator"></span>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-stats">
+                <div class="stat-item">
+                    <span class="stat-icon">📝</span>
+                    <div>
+                        <p class="stat-value" id="contributions-count">0</p>
+                        <p class="stat-label">Contributions</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">⭐</span>
+                    <div>
+                        <p class="stat-value" id="reviews-count">0</p>
+                        <p class="stat-label">Reviews</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Mobile Nav -->
+        <div class="mobile-nav">
+            <a href="index.html" class="mobile-nav-btn">🏠 Home</a>
+            <a href="my-shelf.html" class="mobile-nav-btn">📚 My Shelf</a>
+            <a href="contribute.html" class="mobile-nav-btn active">✨ Contribute</a>
+        </div>
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="floating-elements">
+                <!-- <span class="float-icon">✨</span>
+                <span class="float-icon">📖</span>
+                <span class="float-icon">💡</span>
+                <span class="float-icon">🎯</span> -->
+            </div>
+            <div class="hero-content">
+                <h1 class="page-title">✨ Contribute to Our Library</h1>
+                <p class="page-subtitle">Share your knowledge, recommend books, and help our community grow</p>
+            </div>
+        </div>
+
+        <!-- Contribution Options -->
+        <div class="contribution-cards">
+            <div class="contrib-card" onclick="openModal('book-modal')">
+                <div class="card-icon">📚</div>
+                <h3>Recommend a Book</h3>
+                <p>Share your favorite books with the community</p>
+                <button class="card-btn">Recommend Now</button>
+            </div>
+
+            <div class="contrib-card" onclick="openModal('review-modal')">
+                <div class="card-icon">⭐</div>
+                <h3>Write a Review</h3>
+                <p>Share your thoughts about books you've read</p>
+                <button class="card-btn">Write Review</button>
+            </div>
+
+            <div class="contrib-card" onclick="openModal('quote-modal')">
+                <div class="card-icon">💬</div>
+                <h3>Share a Quote</h3>
+                <p>Post inspiring quotes from your favorite books</p>
+                <button class="card-btn">Share Quote</button>
+            </div>
+
+            <div class="contrib-card" onclick="openModal('list-modal')">
+                <div class="card-icon">📝</div>
+                <h3>Create Reading List</h3>
+                <p>Curate themed book lists for others</p>
+                <button class="card-btn">Create List</button>
+            </div>
+        </div>
+
+        <!-- Recent Contributions -->
+        <div class="recent-section">
+            <h2>🌟 Recent Contributions</h2>
+            <div class="contributions-list" id="contributions-list">
+                <!-- Contributions will be added here -->
+            </div>
+        </div>
+
+        <!-- Community Stats -->
+        <div class="stats-section">
+            <h2>📊 Community Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">1,234</div>
+                    <div class="stat-label">Books Recommended</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5,678</div>
+                    <div class="stat-label">Reviews Written</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">890</div>
+                    <div class="stat-label">Reading Lists</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3,456</div>
+                    <div class="stat-label">Active Contributors</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Book Recommendation Modal -->
+    <div class="modal" id="book-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('book-modal')">&times;</button>
+            <h3>📚 Recommend a Book</h3>
+            <form class="contrib-form" onsubmit="submitBook(event)">
+                <input type="text" placeholder="Book Title *" required>
+                <input type="text" placeholder="Author Name *" required>
+                <input type="text" placeholder="Genre">
+                <textarea placeholder="Why do you recommend this book? *" rows="4" required></textarea>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('book-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div class="modal" id="review-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('review-modal')">&times;</button>
+            <h3>⭐ Write a Review</h3>
+            <form class="contrib-form" onsubmit="submitReview(event)">
+                <input type="text" placeholder="Book Title *" required>
+                <div class="rating-input">
+                    <label>Rating:</label>
+                    <div class="stars">
+                        <span class="star" data-rating="1">☆</span>
+                        <span class="star" data-rating="2">☆</span>
+                        <span class="star" data-rating="3">☆</span>
+                        <span class="star" data-rating="4">☆</span>
+                        <span class="star" data-rating="5">☆</span>
+                    </div>
+                </div>
+                <textarea placeholder="Your review *" rows="5" required></textarea>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('review-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Quote Modal -->
+    <div class="modal" id="quote-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('quote-modal')">&times;</button>
+            <h3>💬 Share a Quote</h3>
+            <form class="contrib-form" onsubmit="submitQuote(event)">
+                <textarea placeholder="Enter the quote *" rows="3" required></textarea>
+                <input type="text" placeholder="Book Title *" required>
+                <input type="text" placeholder="Author Name *" required>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('quote-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Share Quote</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reading List Modal -->
+    <div class="modal" id="list-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('list-modal')">&times;</button>
+            <h3>📝 Create Reading List</h3>
+            <form class="contrib-form" onsubmit="submitList(event)">
+                <input type="text" placeholder="List Title *" required>
+                <input type="text" placeholder="Theme/Category *" required>
+                <textarea placeholder="List Description *" rows="3" required></textarea>
+                <textarea placeholder="Add books (one per line) *" rows="5" required></textarea>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('list-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Create List</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="contribute.js"></script>
+</body>
+</html>
